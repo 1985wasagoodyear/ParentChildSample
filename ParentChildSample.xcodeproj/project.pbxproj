@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		3F091D12235FEFAA0045D4C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D11235FEFAA0045D4C9 /* AppDelegate.swift */; };
-		3F091D14235FEFAA0045D4C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D13235FEFAA0045D4C9 /* ViewController.swift */; };
+		3F091D14235FEFAA0045D4C9 /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D13235FEFAA0045D4C9 /* PersonsViewController.swift */; };
 		3F091D17235FEFAA0045D4C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F091D15235FEFAA0045D4C9 /* Main.storyboard */; };
 		3F091D1A235FEFAA0045D4C9 /* ParentChildSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D18235FEFAA0045D4C9 /* ParentChildSample.xcdatamodeld */; };
 		3F091D1C235FEFAC0045D4C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F091D1B235FEFAC0045D4C9 /* Assets.xcassets */; };
 		3F091D1F235FEFAC0045D4C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F091D1D235FEFAC0045D4C9 /* LaunchScreen.storyboard */; };
+		3F091D27235FEFC10045D4C9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D26235FEFC10045D4C9 /* CoreDataManager.swift */; };
+		3F091D29235FF1B90045D4C9 /* RandomPersonGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D28235FF1B90045D4C9 /* RandomPersonGenerator.swift */; };
+		3F091D2B235FF4560045D4C9 /* CoreDataManager+Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D2A235FF4560045D4C9 /* CoreDataManager+Person.swift */; };
+		3F091D2E235FFD5C0045D4C9 /* Person+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F091D2D235FFD5C0045D4C9 /* Person+Text.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F091D0E235FEFAA0045D4C9 /* ParentChildSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParentChildSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F091D11235FEFAA0045D4C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F091D13235FEFAA0045D4C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F091D13235FEFAA0045D4C9 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
 		3F091D16235FEFAA0045D4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F091D19235FEFAA0045D4C9 /* ParentChildSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ParentChildSample.xcdatamodel; sourceTree = "<group>"; };
 		3F091D1B235FEFAC0045D4C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F091D1E235FEFAC0045D4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F091D20235FEFAC0045D4C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F091D26235FEFC10045D4C9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3F091D28235FF1B90045D4C9 /* RandomPersonGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonGenerator.swift; sourceTree = "<group>"; };
+		3F091D2A235FF4560045D4C9 /* CoreDataManager+Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Person.swift"; sourceTree = "<group>"; };
+		3F091D2C235FF97C0045D4C9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3F091D2D235FFD5C0045D4C9 /* Person+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+Text.swift"; sourceTree = "<group>"; };
+		3FBA40E6237DDA4100D510BE /* CoreDataMigration.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CoreDataMigration.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +50,8 @@
 		3F091D05235FEFAA0045D4C9 = {
 			isa = PBXGroup;
 			children = (
+				3F091D2C235FF97C0045D4C9 /* README.md */,
+				3FBA40E6237DDA4100D510BE /* CoreDataMigration.md */,
 				3F091D10235FEFAA0045D4C9 /* ParentChildSample */,
 				3F091D0F235FEFAA0045D4C9 /* Products */,
 			);
@@ -56,8 +68,12 @@
 		3F091D10235FEFAA0045D4C9 /* ParentChildSample */ = {
 			isa = PBXGroup;
 			children = (
+				3F091D2D235FFD5C0045D4C9 /* Person+Text.swift */,
+				3F091D26235FEFC10045D4C9 /* CoreDataManager.swift */,
+				3F091D2A235FF4560045D4C9 /* CoreDataManager+Person.swift */,
+				3F091D28235FF1B90045D4C9 /* RandomPersonGenerator.swift */,
 				3F091D11235FEFAA0045D4C9 /* AppDelegate.swift */,
-				3F091D13235FEFAA0045D4C9 /* ViewController.swift */,
+				3F091D13235FEFAA0045D4C9 /* PersonsViewController.swift */,
 				3F091D15235FEFAA0045D4C9 /* Main.storyboard */,
 				3F091D1B235FEFAC0045D4C9 /* Assets.xcassets */,
 				3F091D1D235FEFAC0045D4C9 /* LaunchScreen.storyboard */,
@@ -138,8 +154,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F091D14235FEFAA0045D4C9 /* ViewController.swift in Sources */,
+				3F091D14235FEFAA0045D4C9 /* PersonsViewController.swift in Sources */,
+				3F091D2B235FF4560045D4C9 /* CoreDataManager+Person.swift in Sources */,
 				3F091D12235FEFAA0045D4C9 /* AppDelegate.swift in Sources */,
+				3F091D27235FEFC10045D4C9 /* CoreDataManager.swift in Sources */,
+				3F091D2E235FFD5C0045D4C9 /* Person+Text.swift in Sources */,
+				3F091D29235FF1B90045D4C9 /* RandomPersonGenerator.swift in Sources */,
 				3F091D1A235FEFAA0045D4C9 /* ParentChildSample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

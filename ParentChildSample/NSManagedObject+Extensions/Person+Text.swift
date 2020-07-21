@@ -13,9 +13,9 @@ extension Person {
     override public var description: String {
         let t =
         """
-        Name: \(name!)
+        Name: \(name ?? "?")
         Age: \(age)
-        Occupation: \(occupation!)
+        Occupation: \(occupation ?? "?")
         """
         return t
     }
@@ -24,7 +24,8 @@ extension Person {
         name = Person.randomName()
         age = Int16(Int.random(in: 18...108))
         occupation = Person.randomOccupation()
-        usleep(useconds_t.random(in: 0..<1000000)) // randomly wait 0-1 second(s) to simulate a delay
+        // randomly wait 0.5-2 second(s) to simulate a delay
+        usleep(useconds_t.random(in: 500000..<2000000))
     }
     
 }

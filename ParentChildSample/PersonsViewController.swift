@@ -16,10 +16,14 @@ class PersonsViewController: UIViewController {
     
     lazy var generator: RandomPersonGenerator = {
         let update: ()->Void = {
-            self.tableView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.peopleCountLabel.text = "There are \(self.generator.persons.count) people"
+                self.tableView.reloadData()
+            }
         }
-        let generator = RandomPersonGenerator(updateInterval: 3.0,
-                                              makeInterval: 1.0,
+        let generator = RandomPersonGenerator(updateInterval: 1.5,
+                                              makeInterval: 0.75,
                                               update: update)
         generator.useCorrectMethod = true
         return generator
@@ -27,6 +31,7 @@ class PersonsViewController: UIViewController {
     
     // MARK: - Storyboard Outlets
     
+    @IBOutlet var peopleCountLabel: UILabel!
     @IBOutlet var makePeopleOptionsSegmentedControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var makePeopleButton: UIButton!
@@ -47,6 +52,7 @@ class PersonsViewController: UIViewController {
         case 0:
             generator.useCorrectMethod = true
         default:
+            /// will eventually cause a crash, at some unspecific time in the future.
             generator.useCorrectMethod = false
         }
     }

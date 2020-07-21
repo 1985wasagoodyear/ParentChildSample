@@ -45,26 +45,6 @@ class CoreDataManager {
     
     init() {
         let people = loadPeople()
-        print("There are \(people.count)-many people in memory")
-    }
-    
-    deinit {
-        saveContext()
-    }
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
     
 }
-

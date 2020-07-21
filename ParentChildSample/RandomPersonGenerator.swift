@@ -8,20 +8,26 @@
 
 import Foundation
 
-class RandomPersonGenerator {
+public class RandomPersonGenerator {
     
-    let manager = CoreDataManager()
+    private let manager = CoreDataManager()
     
-    let updateInterval: TimeInterval
-    let makeInterval: TimeInterval
+    // MARK: - Timer-related Properties
     
-    var updateTimer: Timer?
-    var makeTimer: Timer?
+    private let updateInterval: TimeInterval
+    private let makeInterval: TimeInterval
+    private var updateTimer: Timer?
+    private var makeTimer: Timer?
+    private var update: (()->Void)?
     
-    var persons: [Person] = []
-    var update: (()->Void)?
+    // MARK: -
+    public var persons: [Person] = []
+    public var useCorrectMethod: Bool = true
+    public var isMakingPeople: Bool {
+        return updateTimer != nil && makeTimer != nil
+    }
     
-    init(updateInterval: TimeInterval,
+    public init(updateInterval: TimeInterval,
          makeInterval: TimeInterval,
          update: (()->Void)? = nil) {
         self.updateInterval = updateInterval
@@ -29,7 +35,7 @@ class RandomPersonGenerator {
         self.update = update
     }
     
-    func start() {
+    public func start() {
         updateTimer = Timer.scheduledTimer(withTimeInterval: updateInterval,
                                            repeats: true) { _ in
                                             self.manager.fetchData({ (persons) in
@@ -39,14 +45,19 @@ class RandomPersonGenerator {
         }
         makeTimer = Timer.scheduledTimer(withTimeInterval: makeInterval,
                                          repeats: true) { _ in
-                                            self.manager.makePerson()
-                                            print("made item")
+                                            if self.useCorrectMethod {
+                                                self.manager.makePerson()
+                                            } else {
+                                                self.manager.makePerson_wrongWay()
+                                            }
         }
     }
     
-    func stop() {
+    public func stop() {
         updateTimer?.invalidate()
         makeTimer?.invalidate()
+        updateTimer = nil
+        makeTimer = nil
     }
     
 }

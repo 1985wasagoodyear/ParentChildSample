@@ -20,7 +20,6 @@ extension CoreDataManager {
             // let request: NSFetchRequest<Person> = Person.fetchRequest()
             let results = try! context.fetch(request)
             completion(results)
-            try! context.save()
         }
     }
     
@@ -38,9 +37,9 @@ extension CoreDataManager {
             let desc = NSEntityDescription.entity(forEntityName: "Person",
                                                   in: context)!
             let person = Person(entity: desc, insertInto: context)
-            person.name = "Bob"
-            person.age = 34
-            person.occupation = "Builder"
+            person.randomizeDetails()
+            
+            // no need to save since it is already made on the main-thread-context
         }
     }
     
@@ -50,9 +49,9 @@ extension CoreDataManager {
             let desc = NSEntityDescription.entity(forEntityName: "Person",
                                                   in: context)!
             let person = Person(entity: desc, insertInto: context)
-            person.name = "Bob"
-            person.age = 34
-            person.occupation = "Builder"
+            person.randomizeDetails()
+            
+            // propogate this person into our main-thread-context
             try! context.save()
         }
     }

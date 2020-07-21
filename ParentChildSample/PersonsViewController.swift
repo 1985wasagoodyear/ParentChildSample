@@ -8,49 +8,72 @@
 
 import UIKit
 
-extension UIView {
-    func fillIn(_ view: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self)
-        let constraints = [
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.topAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-}
-
 private let cellID = "cell"
 
 class PersonsViewController: UIViewController {
 
+    // MARK: - Properties
+    
     lazy var generator: RandomPersonGenerator = {
         let update: ()->Void = {
-            print("did update")
             self.tableView.reloadData()
         }
-        let gen = RandomPersonGenerator(updateInterval: 3.0,
-                                        makeInterval: 1.0,
-                                        update: update)
-        return gen
+        let generator = RandomPersonGenerator(updateInterval: 3.0,
+                                              makeInterval: 1.0,
+                                              update: update)
+        generator.useCorrectMethod = true
+        return generator
     }()
     
-    lazy var tableView: UITableView = {
-       let t = UITableView(frame: .zero, style: .plain)
-        t.backgroundColor = .white
-        t.register(UITableViewCell.self,
-                   forCellReuseIdentifier: cellID)
-        t.dataSource = self
-        return t
-    }()
+    // MARK: - Storyboard Outlets
+    
+    @IBOutlet var makePeopleOptionsSegmentedControl: UISegmentedControl!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var makePeopleButton: UIButton!
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.fillIn(view)
-        generator.start()
+        tableView.register(UITableViewCell.self,
+                   forCellReuseIdentifier: cellID)
+        tableView.dataSource = self
     }
+    
+    // MARK: - Custom Action Methods
+    
+    @IBAction func makePeopleOptionsAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            generator.useCorrectMethod = true
+        default:
+            generator.useCorrectMethod = false
+        }
+    }
+    
+    @IBAction func makePeopleButtonAction(_ sender: UIButton) {
+        if generator.isMakingPeople {
+            generator.stop()
+            sender.setTitle("Start", for: .normal)
+            showFadingAlert(text: "Stopped making people!")
+        } else {
+            generator.start()
+            sender.setTitle("Stop", for: .normal)
+            showFadingAlert(text: "Started making people!")
+        }
+    }
+    
+    func showFadingAlert(text: String) {
+        let alert = UIAlertController(title: text,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        self.present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                alert.dismiss(animated: true)
+            }
+        }
+    }
+    
 
 }
 

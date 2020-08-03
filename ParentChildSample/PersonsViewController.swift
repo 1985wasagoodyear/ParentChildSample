@@ -22,8 +22,8 @@ class PersonsViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        let generator = RandomPersonGenerator(updateInterval: 1.5,
-                                              makeInterval: 0.75,
+        let generator = RandomPersonGenerator(updateInterval: 0.75,
+                                              makeInterval: 0.3,
                                               update: update)
         generator.useCorrectMethod = true
         return generator
